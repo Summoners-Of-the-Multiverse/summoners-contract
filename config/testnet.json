@@ -1,0 +1,30 @@
+[
+  {
+    "name": "BNB Chain",
+    "chainId": 97,
+    "rpc": "https://data-seed-prebsc-1-s1.binance.org:8545/",
+    "gateway": "0x4D147dCb984e6affEEC47e44293DA442580A3Ec0",
+    "gasReceiver": "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6",
+    "tokenName": "BNB",
+    "tokenSymbol": "BNB",
+    "executableSample": "0x9372350Abb3B5c10DB1BB858e0bCf91eFa74d946",
+    "constAddressDeployer": "0x98b2920d53612483f91f12ed7754e51b4a77919e",
+    "crossChainToken": "0x0AFFD3B1275dffefA70752b86Cf09586Ba957dab",
+    "erc721": "0x4DbA0ab26EE3EB5b4Ec8624de77dDcbe9815C62c",
+    "nftLinker": "0x556413BF5c388D4D01E5A90755b6863FBAD4576b"
+  },
+  {
+    "name": "Polygon",
+    "chainId": 80001,
+    "rpc": "https://polygontestapi.terminet.io/rpc",
+    "gateway": "0xBF62ef1486468a6bd26Dd669C06db43dEd5B849B",
+    "gasReceiver": "0xbE406F0189A0B4cf3A05C286473D23791Dd44Cc6",
+    "tokenName": "MATIC",
+    "tokenSymbol": "MATIC",
+    "executableSample": "0x9372350Abb3B5c10DB1BB858e0bCf91eFa74d946",
+    "constAddressDeployer": "0x98b2920d53612483f91f12ed7754e51b4a77919e",
+    "crossChainToken": "0x0AFFD3B1275dffefA70752b86Cf09586Ba957dab",
+    "erc721": "0x18012f62c4393900c5F70821839a2fD0e0270781",
+    "nftLinker": "0x556413BF5c388D4D01E5A90755b6863FBAD4576b"
+  }
+]
