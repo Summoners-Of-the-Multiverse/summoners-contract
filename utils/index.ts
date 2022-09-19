@@ -6,9 +6,6 @@ import NftLinker from '../artifacts/contracts/NFTLinker.sol/SotmNftLinker.json';
 import { isTestnet, wallet } from '../config/constants';
 import { defaultAbiCoder, keccak256 } from 'ethers/lib/utils';
 import { sleep } from './sleep';
-// https://betterprogramming.pub/adding-web3-to-our-nextjs-typescript-project-861e9ed5feaf
-import Web3 from '@walletconnect/web3-provider';
-
 
 const tokenId = 0;
 
@@ -16,17 +13,6 @@ let chains = isTestnet ? require('../config/testnet.json') : require('../config/
 
 const bscChain = chains.find((chain: any) => chain.name === 'BNB Chain') as any;
 const polygonChain = chains.find((chain: any) => chain.name === 'Polygon') as any;
-
-export function login(): void {
-    const web3 = new Web3(window.ethereum);
-    try {
-      const accounts = await window.ethereum.send(
-        "eth_requestAccounts"
-      )
-      console.log('accounts', accounts.result[0]);
-      const address = accounts.result[0];
-      const signed_msg = await Web3Token.sign(msg => web3.eth.personal.sign(msg, address), '1h');
-}
 
 export function updateContractsOnChainConfig(chain: any): void {
     chain.wallet = wallet.connect(getDefaultProvider(chain.rpc));
