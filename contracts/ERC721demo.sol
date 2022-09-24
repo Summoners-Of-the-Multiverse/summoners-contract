@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 //A simple ERC721 that allows users to mint NFTs as they please.
 contract Sotm721 is ERC721URIStorage {
     mapping(string => uint8) private _hashes;
-    mapping(uint256 => uint8) private _tokenIds;
+    mapping(uint256 => uint8) private _claimed;
 
     constructor(string memory name_, string memory symbol_)
         ERC721(name_, symbol_)
@@ -16,10 +16,10 @@ contract Sotm721 is ERC721URIStorage {
 
     // function mint(uint256 tokenId) external {
     //     require(
-    //         _tokenIds[tokenId] != 1,
-    //         "token ID already exists"
+    //         _claimed[tokenId] != 1,
+    //         "token ID already claimed"
     //     );
-    //     _tokenIds[tokenId] = 1;
+    //     _claimed[tokenId] = 1;
     //     _safeMint(_msgSender(), tokenId);
     // }
 
@@ -29,14 +29,14 @@ contract Sotm721 is ERC721URIStorage {
         string memory tokenURI
     ) external {
         require(
-            _tokenIds[tokenId] != 1,
-            "token ID already exists"
+            _claimed[tokenId] != 1,
+            "token ID already claimed"
         );
-        _tokenIds[tokenId] = 1;
+        _claimed[tokenId] = 1;
 
         require(
             _hashes[assetHash] != 1,
-            "hash already exists"
+            "hash already claimed"
         );
         _hashes[assetHash] = 1;
 
