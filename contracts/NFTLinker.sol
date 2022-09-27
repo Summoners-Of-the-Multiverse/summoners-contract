@@ -212,8 +212,34 @@ contract SotmNftLinker is
         }
     }
 
+    function getOriginalData(uint256 currTokenId) external view returns(string memory, uint256) {
+        (
+            string memory originalChain,
+            address operator,
+            uint256 tokenId,
+            string memory tokenURI
+        ) = abi.decode(
+            original[currTokenId],
+            (string, address, uint256, string)
+        );
+        operator;
+        tokenURI;
+
+        return(originalChain, tokenId);
+    }
+
+    function safeGetOriginalData(uint256 currTokenId) external view returns(string memory, uint256) {
+        //Decode the payload.
+        try this.getOriginalData(currTokenId) returns (string memory originalChain, uint256 tokenId) {
+            return(originalChain, tokenId);
+        } catch (bytes memory _err) {
+            _err;
+            return(chainName, currTokenId);
+        }
+    }
+
     function contractId() external pure returns (bytes32) {
         // need to change this id when re-deploy
-        return keccak256("sotm_linker4");
+        return keccak256("sotm_linker6");
     }
 }

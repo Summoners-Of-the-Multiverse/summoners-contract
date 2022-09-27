@@ -12,6 +12,6 @@ contract SotmProxy is Proxy {
         returns (bytes32)
     {
         // need to change this id when re-deploy
-        return keccak256("sotm_linker4");
+        return keccak256("sotm_linker6");
     }
 }

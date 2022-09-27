@@ -10,7 +10,7 @@ const { deployUpgradable } = require('@axelar-network/axelar-gmp-sdk-solidity');
 // load contracts
 const ExampleProxy = require('../artifacts/contracts/Proxy.sol/SotmProxy.json');
 const NFTLinker = require('../artifacts/contracts/NFTLinker.sol/SotmNftLinker.json');
-const ERC721 = require('../artifacts/contracts/ERC721demo.sol/Sotm721.json');
+const ERC721 = require('../artifacts/contracts/Sotm721.sol/Sotm721.json');
 
 let chains = isTestnet ? require('../config/testnet.json') : require('../config/local.json');
 
@@ -29,7 +29,7 @@ async function deployNFTContracts(chain: any) {
     // deploy/mint an NFT to selected chain
     const erc721 = await deployContract(walletConnectedToProvider, ERC721, ['Summoners of the Multiverse', 'SOTM']);
     chain.erc721 = erc721.address;
-    console.log(`ERC721Demo deployed on ${chain.name} ${erc721.address}.`);
+    console.log(`Sotm721 deployed on ${chain.name} ${erc721.address}.`);
 
     if (chain.name === "BNB Chain") {
         const hash = '7a8a7902a4ee5625dec2'
