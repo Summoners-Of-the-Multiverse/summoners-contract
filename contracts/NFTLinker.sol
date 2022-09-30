@@ -234,12 +234,13 @@ contract SotmNftLinker is
             return(originalChain, tokenId);
         } catch (bytes memory _err) {
             _err;
+            // actually unsafe as we return the tokenId sent by caller
             return(chainName, currTokenId);
         }
     }
 
     function contractId() external pure returns (bytes32) {
         // need to change this id when re-deploy
-        return keccak256("sotm_linker6");
+        return keccak256("sotm_linker7");
     }
 }

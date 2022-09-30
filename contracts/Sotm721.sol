@@ -22,6 +22,9 @@ contract Sotm721 is ERC721URIStorage {
     //     _claimed[tokenId] = 1;
     //     _safeMint(_msgSender(), tokenId);
     // }
+    function isClaimed(uint256 tokenId) external view returns(uint256) {
+        return _claimed[tokenId];
+    }
 
     function mintWithMetadata(
         uint256 tokenId,
