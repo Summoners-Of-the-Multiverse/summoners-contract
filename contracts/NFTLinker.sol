@@ -241,6 +241,6 @@ contract SotmNftLinker is
 
     function contractId() external pure returns (bytes32) {
         // need to change this id when re-deploy
-        return keccak256("sotm_linker7");
+        return keccak256("sotm_linker9");
     }
 }

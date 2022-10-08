@@ -17,6 +17,7 @@ let chains = isTestnet ? require('../config/testnet.json') : require('../config/
 // get chains
 const bnbChain = chains.find((chain: any) => chain.name === 'BNB Chain');
 const polygonChain = chains.find((chain: any) => chain.name === 'Polygon');
+const avaxChain = chains.find((chain: any) => chain.name === 'Avalanche');
 
 const nftTokenId = 0;
 
@@ -36,6 +37,11 @@ async function deployNFTContracts(chain: any) {
         const metadata = `https://api.npoint.io/${hash}`;
         await (await erc721.mintWithMetadata(nftTokenId, hash, metadata)).wait(1);
         console.log(`Minted token ${nftTokenId} ${hash} for ${chain.name} with metadata ${metadata}`);
+    } else if (chain.name === "Avalanche") {
+        const hash = 'b4211bbb7f9ed9c41d78'
+        const metadata = `https://api.npoint.io/${hash}`;
+        await (await erc721.mintWithMetadata(nftTokenId, hash, metadata)).wait(1);
+        console.log(`Minted token ${nftTokenId} ${hash} for ${chain.name}`);
     } else {
         const hash = 'efaecf7cee7cfe142516'
         const metadata = `https://api.npoint.io/${hash}`;
@@ -60,12 +66,12 @@ async function deployNFTContracts(chain: any) {
 
 async function main() {
 
-    for await (let chain of [bnbChain, polygonChain]) {
+    for await (let chain of [bnbChain, polygonChain, avaxChain]) {
         await deployNFTContracts(chain);
     }
 
     // update chains
-    const updatedChains = [bnbChain, polygonChain];
+    const updatedChains = [bnbChain, polygonChain, avaxChain];
     if (isTestnet) {
         await fs.writeFile('config/testnet.json', JSON.stringify(updatedChains, null, 2));
     } else {
